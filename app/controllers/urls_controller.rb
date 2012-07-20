@@ -4,6 +4,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
+    @host = request.env['HTTP_HOST']
     @urls = Url.all
 
     respond_to do |format|
@@ -17,6 +18,7 @@ class UrlsController < ApplicationController
 
   # GET /urls/:shortlink
   def show
+    
     @url = Url.find(params[:id])
     #shortlink = ShortlinkParser.parse_shortlink(params[:shortlink], params[:short_url])
     
@@ -39,7 +41,7 @@ class UrlsController < ApplicationController
   def new
     #@url = Url.new
 
-    @url = Url.new(params[:url])
+    @url = Url.new(params[:url], request)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,7 +59,7 @@ class UrlsController < ApplicationController
   def create
     #@url = Url.new(params[:url])
 
-    @url = Url.new(params[:url])
+    @url = Url.new(params[:url], request)
 
     respond_to do |format|
       if @url.save

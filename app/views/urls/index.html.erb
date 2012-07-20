@@ -3,16 +3,19 @@
 <table>
   <tr>
     <th>Url</th>
+    <th>&nbsp</th>
     <th>Shortlink</th>
     <th></th>
-    <th></th>
+    <th>Actions</th>
     <th></th>
   </tr>
 
 <% @urls.each do |url| %>
   <tr>
     <td><%= url.url %></td>
-    <td><%= url.shortlink %></td>
+    <td>&nbsp</td>
+    <td><%= link_to short_url(url.shortlink), short_url(url.shortlink) %></td>
+    <td>&nbsp&nbsp|</td>
     <td><%= link_to 'Show', url %></td>
     <td><%= link_to 'Edit', edit_url_path(url) %></td>
     <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
