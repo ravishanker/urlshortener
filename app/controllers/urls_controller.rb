@@ -6,6 +6,7 @@ class UrlsController < ApplicationController
   def index
     @host = request.env['HTTP_HOST']
     @urls = Url.all
+    @visitors = Visitor.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,6 +24,7 @@ class UrlsController < ApplicationController
     #shortlink = ShortlinkParser.parse_shortlink(params[:shortlink], params[:short_url])
     
     #@url = Url.find(params[:shortlink])
+
 
     # if @url
     #   redirect_to @url.url, status: :moved_permanently
@@ -104,7 +106,8 @@ class UrlsController < ApplicationController
     
     #shortlink = ShortlinkParser.parse_shortlink(params[:shortlink], params[:short_url])
     @url = Url.find_by_shortlink(params[:shortlink])
-    
+    @url.visitors.new({:ip => request.env['HTTP_REFERER'], :location => 'US'})
+    @url.save
 
     if @url
       redirect_to @url.url, status: :moved_permanently

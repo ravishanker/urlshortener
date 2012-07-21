@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ip:</b>
+  <%= @visitor.ip %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @visitor.location %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @visitor.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_visitor_path(@visitor) %> |
+<%= link_to 'Back', visitors_path %>

@@ -1,4 +1,6 @@
 Urlshortener::Application.routes.draw do
+  resources :visitors
+
   resources :urls
 
   root to: 'urls#new'
@@ -6,7 +8,7 @@ Urlshortener::Application.routes.draw do
   # post 'shorten', to: 'urls#shorten'
   # get 'expand',   to: 'urls#expand'
 
-  match 'urls/:shortlink', to: 'urls#redirect', as: 'short'
+  match '/:shortlink', to: 'urls#redirect', as: 'short'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
