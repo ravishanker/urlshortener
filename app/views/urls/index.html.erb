@@ -6,8 +6,9 @@
     <th>&nbsp</th>
     <th>Shortlink</th>
     <th></th>
-    <th>Actions</th>
+    <th>Visitors</th>
     <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @urls.each do |url| %>
@@ -15,8 +16,8 @@
     <td><%= url.url %></td>
     <td>&nbsp</td>
     <td><%= link_to short_url(url.shortlink), short_url(url.shortlink) %></td>
-    <td><%= @visitors.count %></td>
-    <td>&nbsp&nbsp|</td>
+    <td>&nbsp&nbsp&nbsp</td>
+    <td><%= url.visitors.count %></td>
     <td><%= link_to 'Show', url %></td>
     <td><%= link_to 'Edit', edit_url_path(url) %></td>
     <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>

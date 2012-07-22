@@ -5,8 +5,8 @@ class UrlsController < ApplicationController
   # GET /urls.json
   def index
     @host = request.env['HTTP_HOST']
-    @urls = Url.all
-    @visitors = Visitor.all
+    #@urls = Url.all
+    @urls = Url.includes(:visitors).all
 
     respond_to do |format|
       format.html # index.html.erb
